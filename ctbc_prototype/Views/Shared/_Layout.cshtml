@@ -1,48 +1,85 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta id="view-port" name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewData["Title"] - ctbc_prototype</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
-</head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ctbc_prototype</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+    <link rel="stylesheet" href="~/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/coreui.css" />
+    <link rel="stylesheet" href="~/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="~/css/coreui2.min.css" />
+    <link rel="stylesheet" href="~/css/coreui3.min.css" />
+    <link rel="stylesheet" href="~/css/datatables.min.css" />
+    <link rel="stylesheet" href="~/css/select2.min.css" />
+    @RenderSection("Styles", required: false)
+    <style>
+        .container-fluid {
+            padding: 15px 0px 15px 15px !important;
+        }
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2021 - ctbc_prototype - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+        .dashboard-Title {
+            color: #fff;
+            background-color: #e5755f;
+        }
+
+        .div-logo {
+            margin-left: 0px;
+            height: 100px;
+            width: inherit;
+            background-repeat: no-repeat;
+            background-color: white;
+            background-size: 300px 120px;
+        }
+
+        .div-Info {
+            margin-bottom: -10px;
+        }
+
+        .nav-admin {
+            background: #6d000e;
+        }
+
+        .sidebar .nav-dropdown.nav-admin.open {
+            background: #6d000e;
+        }
+
+        .nav-admin-child {
+            background: #b81a2d;
+        }
+
+        .nav-dropdown.open .nav-item.nav-admin-child {
+            background: #b81a2d;
+        }
+
+        .sidebar .nav-dropdown.open .nav-item.nav-admin-child .nav-link.active {
+            background: #ef8f9b;
+        }
+    </style>
+</head>
+<body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
+    <partial name="_NavbarPartial.cshtml" model="Model" />
+    <partial name="_SidebarPartial.cshtml" model="Model" />
+    <div class="app-body">
+        <main role="main">
+            <div class="container-fluid">
+                @RenderBody()
+            </div>
+        </main>
+        @*<partial name="_AsideMenuPartial.cshtml" model="Model" />*@
+    </div>
+    <partial name="_FooterPartial.cshtml" model="Model" />
+    <partial name="~/Views/Shared/_ModalDialogBox.cshtml" />
+    <partial name="~/Views/Shared/_ModalAlertBox.cshtml" />
+    <script src="~/js/jquery.min.js"></script>
+    <script src="~/js/moment.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/modernizr.min.js"></script>
+    <script src="~/js/select2.min.js"></script>
+    <script src="~/js/coreuiDependency.min.js"></script>
+    <script src="~/js/coreui.min.js"></script>
+    <script src="~/js/datatables.min.js"></script>
+    <script src="~/js/dialog.min.js"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

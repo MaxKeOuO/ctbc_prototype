@@ -1,0 +1,58 @@
+﻿@*@model BaseVo*@
+<div class="sidebar">
+    <nav class="sidebar-nav">
+        <ul class="nav">
+            @*
+            @if (Model.SubNetMains != null)
+            {//前臺才會顯示子系統切換
+                <li class="nav-item">
+                    <select id="selecteChildSys" class="form-control">
+                        @foreach (SubNetMainVo subNetMainVo in Model.SubNetMains)
+                        {
+                            <!option value="@subNetMainVo.SnmId" @(Model.SnmId == subNetMainVo.SnmId ? "selected" : "")>@subNetMainVo.SubNetName</!option>
+                        }
+                    </select>
+                </li>
+            }
+            @foreach (var sidebarItem in Model.BarItems.SideBarItems)
+            {
+                if (sidebarItem.OpenOtherWindow)
+                {//彈出視窗
+                    <li class="nav-item">
+                        <a class="nav-link" href="javascript:void(0)" onclick="window.open('@sidebarItem.ItemHref')">@sidebarItem.ItemName</a>
+                    </li>
+                }
+                else
+                {
+                    if (sidebarItem.Children.Count > 0)
+                    {//有子項目
+                        <li class="nav-item nav-dropdown">
+                            <a class="nav-link nav-dropdown-toggle" href="@sidebarItem.ItemHref">@sidebarItem.ItemName</a>
+                            <ul class="nav-dropdown-items">
+                                @foreach (var children in sidebarItem.Children)
+                                {
+                                    if (children.OpenOtherWindow)
+                                    {//彈出視窗
+                                        <li class="nav-item"><a class="nav-link" style="margin-left: 1.093rem" href="javascript:void(0)" onclick="window.open('@children.ItemHref')">@children.ItemName</a></li>
+                                    }
+                                    else
+                                    {
+                                        <li class="nav-item"><a class="nav-link" style="margin-left: 1.093rem" href="@children.ItemHref">@children.ItemName</a></li>
+                                    }
+                                }
+                            </ul>
+                        </li>
+                    }
+                    else
+                    {//沒有子項目
+                        <li class="nav-item">
+                            <a class="nav-link" href="@sidebarItem.ItemHref">@sidebarItem.ItemName</a>
+                        </li>
+                    }
+                }
+            }
+            *@
+
+        </ul>
+    </nav>
+</div>

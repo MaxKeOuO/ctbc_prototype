@@ -1,0 +1,90 @@
+﻿@*@model BaseVo*@
+<style>
+    #replaceText {
+        color: #2177b8;
+        font-size: 20px;
+    }
+
+    .div-Info label {
+        margin-bottom: 0px !important;
+    }
+</style>
+<ul class="nav navbar-nav ul-headerItem d-sm-down-none">
+    <li class="height-Limit">
+        <div class="div-Info">
+            <div class="row">
+                <div class="col-3 text-center">
+                    @*<img alt='圖片失效' src="@Url.ActionLink("GetPhoto", "File")" style="margin-top: 10px;width: 75px;height: 75px;overflow: hidden;" class="headerImg" />*@
+                    @*<span id="replaceText"><strong>@Model.RepleaceTxt</strong></span>*@
+                </div>
+                <div class="col" style="width:310px">
+                    <span style="font-size:20px;">
+                        您好, xxx
+                        @*@Html.Label($"{Model.Greeting}")*@
+                    </span>
+                    <br />
+                    <span style="font-size:8px;">
+                        若您未進行網頁切換，將於<span id="Check_Txt" class="text-danger"><span id="Check_i">0小時0分0秒</span></span>後登出
+                    </span>
+                    <hr style="margin:1px" />
+                    <span>
+                        電子郵件：未讀郵件 <a id="unReadMail"></a>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <button id="LogoutBtn" class="badge badge-pill badge-danger float-right mr-1" style="border: none; margin-top: 15px; " href="@Url.Action("Logout","User")">
+            登出
+        </button>
+        <button style="border:none;margin-top:15px; " class="badge badge-pill badge-success float-right mr-1" id="reCount">
+            延長作業時間
+        </button>
+    </li>
+</ul>
+@*
+    <script src="~/js/jquery.min.js"></script>
+    <script src="~/js/reciprocal.min.js"></script>
+    <script src="~/js/Dashboard/unreadmail.min.js"></script>
+    <script>
+
+        var timeInMinutes = @Model.LoginExpireMinutes;
+        var currentTime = Date.parse(new Date());
+        var deadline = new Date(currentTime + timeInMinutes * 60 * 1000);
+        var setRemindMinutes = 5;
+        var alertDeadline = new Date(currentTime + setRemindMinutes * 60 * 1000);
+        var isSwitchAccount = '@Model.IsSwitchAccount';
+
+        $(document).ready(function() {
+            @if (!Model.IsBackStage)
+            {//前臺
+                @:ChangeChildSys.change('@Url.Action("Index", "Home")','@(Model.SnmId)');
+            }
+            else
+            {//後台
+                @:ChangeChildSys.change('@Url.Action("SwitchStage", "Home")','@(Model.SnmId)');
+            }
+
+            var OkAction = function () {
+
+                httpUtil.post('/AccountManage/LogoutSwitchAccount', '', 'json', function(data) {
+
+                    window.location.href = '/User/Logout';
+                }, function() { });
+            }
+
+            $('[id="LogoutBtn"]').click(function() {
+                console.log(isSwitchAccount);
+                if (isSwitchAccount == 'True') {
+                    modalDialogBox.open('系統訊息', '模擬角色身分中，是否登出模擬並且登出。', null, OkAction);
+                }
+                else {
+                    window.location.href = '/User/Logout';
+                }
+            });
+
+            Countdown.initializeClock('Check_i', deadline, "@Url.Action("ExtendTimeOut", "User")", alertDeadline);
+
+            httpUtil.get('@Url.Action("GetNotReadMail", "Dashboard")', null, GetNotReadMail, null);
+        });
+    </script>
+*@

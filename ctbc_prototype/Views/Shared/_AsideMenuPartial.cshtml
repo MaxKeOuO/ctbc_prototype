@@ -1,0 +1,62 @@
+﻿@*@model BaseVo*@
+<style>
+    #AsidePartial .scroll {
+        max-height: 100px;
+        overflow-y: auto;
+    }
+
+    #AsidePartial .card {
+        margin-bottom: 10px;
+    }
+
+    #AsidePartial .card-body {
+        padding: 0px;
+    }
+
+    #AsidePartial td {
+        font-weight: bold;
+        padding: 0px !important;
+        padding-left: 5px !important;
+        padding-right: 5px !important;
+    }
+
+    #AsidePartial table {
+        margin: 0px !important;
+    }
+</style>
+<script src="~/js/jquery.min.js"></script>
+<script src="~/js/Dashboard/unreadmail.min.js"></script>
+<script src="~/js/Util.min.js"></script>
+<script src="~/js/reciprocal.min.js"></script>
+<script src="~/js/jquery.blockUI.min.js"></script>
+<aside class="aside-menu" id="AsidePartial">
+    <!-- Tab panes-->
+    <div class="tab-content aside-Background">
+        <div class="tab-pane active" id="timeline" role="tabpanel">
+            <div class="list-group list-group-accent">
+                <div class="col aside-Padding">
+                    <div class="card d-md-none">
+                        <div class="dashboard-card-header card-header text-white">
+                            <img alt='圖片失效'  src="@Url.ActionLink("GetPhoto", "File", new { QueryUmId = Model.UmId })" class="headerImg" />
+                            <button type="button" class="float-right btn-sm btn-primary switchMobile">電腦版</button>
+                        </div>
+                        <div class="card-body">
+                            <span>
+                                若您未進行網頁切換，將於<span id="Check_Txt" class="text-danger"><span id="Check_i">0小時0分0秒</span></span>後登出
+                            </span>
+                            <button class="btn-sm badge-success" id="reCount">延長時間</button>
+                            <button class="btn-sm badge-danger" id="LogoutBtn" href="@Url.Action("Logout","User")">登出</button>
+                            <hr />
+                            <span>
+                                電子郵局：未讀信件 : <a id="unReadMail"></a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</aside>
+
+
+

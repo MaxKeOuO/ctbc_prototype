@@ -1,0 +1,183 @@
+﻿[
+    // === JavaScript ===
+    {
+        "outputFileName": "wwwroot/js/jquery.min.js",
+        "inputFiles": [
+            "Scripts/lib/jquery/dist/jquery.min.js"
+        ],
+        "minify": {
+            "enabled": false,
+            "renameLocals": false
+        }
+    },
+    {
+        "outputFileName": "wwwroot/js/bootstrap.min.js",
+        "inputFiles": [
+            "Scripts/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
+        ],
+        "minify": {
+            "enabled": false,
+            "renameLocals": false
+        }
+    },
+    {
+        "outputFileName": "wwwroot/js/modernizr.min.js",
+        "inputFiles": [
+            "Scripts/lib/modernizr/modernizr-*"
+        ],
+        "minify": {
+            "enabled": true
+        }
+    },
+    {
+        "outputFileName": "wwwroot/js/coreuiDependency.min.js",
+        "inputFiles": [
+            "Scripts/lib/perfect-scrollbar/dist/perfect-scrollbar.min.js",
+            "Scripts/lib/pace-progress/js/pace.min.js"
+        ],
+        "minify": {
+            "enabled": false
+        }
+    },
+    {
+        "outputFileName": "wwwroot/js/coreui.min.js",
+        "inputFiles": [
+            "Scripts/lib/coreui/dist/js/coreui.js"
+        ],
+        "minify": {
+            "enabled": false
+        }
+    },
+    {
+        "outputFileName": "wwwroot/js/fullcalendar.min.js",
+        "inputFiles": [
+            "Scripts/lib/jquery-ui/js/jquery-ui.js",
+            "Scripts/lib/jquery-timepicker/js/jquery-timepicker.min.js",
+            "Scripts/lib/fullcalendar/js/fullcalendar.js",
+            "Scripts/lib/fullcalendar/js/locale.zh-tw.min.js"
+        ],
+        "minify": {
+            "enabled": true
+        }
+    },
+    {
+        "outputFileName": "wwwroot/js/datatables.min.js",
+        "inputFiles": [
+            "Scripts/lib/jquery-ui/js/jquery-ui.js",
+            "Scripts/lib/datatables/js/datatables.js",
+            "Scripts/lib/datatables/js/dataTables.jqueryui.js",
+            "Scripts/lib/datatables/js/dataTables.fixedHeader.js",
+            "Scripts/lib/datatables/js/fixedHeader.jqueryui.js",
+            "Scripts/lib/datatables/js/dataTables.select.js"
+        ],
+        "minify": {
+            "enabled": true
+        }
+    },
+    {
+        "outputFileName": "wwwroot/js/moment.min.js",
+        "inputFiles": [
+            "Scripts/lib/moment/moment.min.js"
+        ],
+        "minify": {
+            "enabled": false
+        }
+    },
+    {
+        "outputFileName": "wwwroot/js/dialog.min.js",
+        "inputFiles": [
+            "Scripts/js/dialog.js"
+        ],
+        "minify": {
+            "enabled": true
+        }
+    },
+    {
+        "outputFileName": "wwwroot/js/select2.min.js",
+        "inputFiles": [
+            "Scripts/lib/select2/select2.full.min.js",
+            "Scripts/lib/select2/zh-TW.js"
+        ],
+        "minify": {
+            "enabled": true
+        }
+    },
+    {
+        "outputFileName": "wwwroot/js/daterangepicker.min.js",
+        "inputFiles": [
+            "Scripts/lib/daterangepicker/daterangepicker.js"
+        ],
+        "minify": {
+            "enabled": true
+        }
+    },
+
+    // === CSS ===
+    {
+        "outputFileName": "wwwroot/css/bootstrap.min.css",
+        "inputFiles": [
+            "Scripts/lib/bootstrap/dist/css/bootstrap.min.css"
+        ],
+        "minify": {
+            "enabled": false
+        }
+    },
+    {
+        "outputFileName": "wwwroot/css/coreui3.min.css",
+        "inputFiles": [
+            "Scripts/lib/simple-line-icons/css/simple-line-icons.css"
+        ],
+        "minify": {
+            "enabled": true
+        }
+    },
+    {
+        "outputFileName": "wwwroot/css/font-awesome.min.css",
+        "inputFiles": [
+            "Scripts/lib/font-awesome/css/font-awesome.css"
+        ],
+        "minify": {
+            "enabled": true
+        }
+    },
+    {
+        "outputFileName": "wwwroot/css/datatables.min.css",
+        "inputFiles": [
+            "Scripts/lib/jquery-ui/css/jquery-ui.css",
+            "Scripts/lib/datatables/css/dataTables.jqueryui.css",
+            "Scripts/lib/datatables/css/fixedHeader.jqueryui.css",
+            "Scripts/lib/datatables/css/select.dataTables.css"
+        ],
+        "minify": {
+            "enabled": true
+        }
+    },
+    {
+        "outputFileName": "wwwroot/css/coreui2.min.css",
+        "inputFiles": [
+            "Scripts/lib/coreui/dist/css/coreui-icons.min.css",
+            "Scripts/lib/pace-progress/css/pace.min.css"
+        ],
+        "minify": {
+            "enabled": false
+        }
+    },
+    {
+        "outputFileName": "wwwroot/css/select2.min.css",
+        "inputFiles": [
+            "Scripts/lib/select2/select2.css"
+        ],
+        "minify": {
+            "enabled": true
+        }
+    },
+    {
+        "outputFileName": "wwwroot/css/daterangepicker.min.css",
+        "inputFiles": [
+            "Scripts/lib/daterangepicker/daterangepicker.css"
+        ],
+        "minify": {
+            "enabled": true
+        }
+    }
+]

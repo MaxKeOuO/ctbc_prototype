@@ -1,0 +1,40 @@
+﻿<style>
+    .btnMargin{
+        margin-right:30px;
+    }
+    #modalDialogFooter {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-align: center;
+        align-items: center;
+        -ms-flex-pack: end;
+        justify-content: flex-end;
+        padding: 1rem;
+        /* border-top: 1px solid #dee2e6; */
+        border-bottom-right-radius: .3rem;
+        border-bottom-left-radius: .3rem;
+    }
+
+    .modal-box-shadow {
+        box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+    }
+</style>
+<div class="modal fade" id="modalDialogBox" tabindex="-1" role="dialog" aria-labelledby="modalDialogBoxLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content modal-box-shadow">
+            <div class="modal-header alert-primary">
+                <h5 class="modal-title" id="modalDialogBoxLabel"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>            
+            <div class="modal-body">
+                <label id="dialogErrorMessage" for="dialogErrorMessage"></label>
+            </div>
+            <div id="modalDialogFooter">
+                <button type="button" id="btnDialogOk" class="btnMargin btn btn-primary" data-dismiss="modal">確定</button>
+                <button type="button" id="btnDialogCancel" class="btn btn-danger" data-dismiss="modal">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
