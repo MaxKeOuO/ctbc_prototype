@@ -1,0 +1,111 @@
+﻿
+@{
+    ViewData["Title"] = "SingleRiskManage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Styles{ 
+
+}
+
+<h3>●單一事件提報 → 風險事件列表</h3>
+
+<table id="table">
+    <thead>
+        <tr>
+            <th id="ThRId">事件編號</th>
+            <th id="ThDate">提報日期</th>
+            <th id="ThUserName">提報人</th>
+            <th id="ThDept">提報單位</th>
+            <th id="ThMemo">事件說明</th>
+            <th id="ThStatus">狀態</th>
+            <th id="ThFix">修改</th>
+        </tr>
+    </thead>
+</table>
+
+
+@section Scripts{ 
+    <script>
+
+        $(document).ready(function () {
+            let rowData = [
+            {//事件編號
+                'data': 'rId'
+            },
+            {//提報日期
+                'data': 'rDate'
+            },
+            {//提報人
+                'data': 'userName'
+            },
+            {//提報單位
+                'data': 'userDept'
+            },
+            {//事件說明
+                'data': 'memo'
+            },
+            {//狀態
+                'data': 'rStatus'
+            },
+            {//管理按鈕
+                'data': 'rId',
+                'render': (data, type, full, meta) => {
+                    //編輯鈕
+                    let btnEdit = $('<a />');
+                    btnEdit.addClass('btn btn-primary');
+                    btnEdit.prop('href', '@Url.Action("RiskEdit")?RId=' + data);
+                    btnEdit.text('修改');
+
+                    return btnEdit.prop('outerHTML');
+                }
+            }
+        ];
+
+            $('#table').DataTable({
+                //"processing": true,
+                //"serverSide": initData.serverSide,
+                //"destroy": initData.destroy,
+                "ajax": {
+                    "url": "@Url.Action("GetRiskList")",
+                    "type": "POST"
+                },
+                "columns": rowData,
+                "orderCellsTop": true,
+                "fixedHeader": true,
+                "lengthMenu": [[10, 30, 50, -1], [10, 30, 50, "All"]],
+                "dom": '<"toolbar">rtlp',
+                "pagingType": "full_numbers",
+                "language": {
+                    "decimal": "",
+                    "emptyTable": "沒有資料",
+                    "info": "顯示第 _START_ 到第 _END_ 筆共 _TOTAL_ 筆",
+                    "infoEmpty": "顯示第 0 到第 0 筆共 0 筆",
+                    "infoFiltered": "(從總共 _MAX_ 筆中篩選)",
+                    "infoPostFix": "",
+                    "thousands": "",
+                    "lengthMenu": "每頁顯示_MENU_筆資料",
+                    "loadingRecords": "讀取中...",
+                    "processing": "讀取中...",
+                    "search": "<div id='search-div' class='input-group-prepend'><i style='padding-top:9px' class='fa fa-search input-group-text' aria-hidden='true'></i></div>",
+                    "zeroRecords": "找不到相符的資料",
+                    "paginate": {
+                        "first": "最前",
+                        "last": "最後",
+                        "next": "下頁",
+                        "previous": "上頁"
+                    },
+                    "aria": {
+                        "sortAscending": ": 升序排列",
+                        "sortDescending": ": 降序排列"
+                    }
+                },
+                //"fnRowCallback": initData.fnRowCallback,
+                //"drawCallback": initData.drawCallback,
+            });
+        });
+
+
+
+
+    </script>
+}

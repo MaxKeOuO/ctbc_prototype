@@ -8,16 +8,8 @@
             </div>
         </div>
     </div>
-    @*<img alt='圖片失效'  style="height:100px;width:inherit;" src="@ViewBag.img" />*@
-
-    @*<img alt='圖片失效'  style="height:50px;" src="~/images/logo.jpg" />*@
     <button class="navbar-toggler sidebar-toggler d-lg-none" type="button" data-toggle="sidebar-show"><span class="navbar-toggler-icon"></span></button>
     <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button" data-toggle="sidebar-lg-show"><span class="navbar-toggler-icon"></span></button>
 
-    <!-- 上方選單 以系統功能為主-->
     <partial name="_NavbarItemPartial.cshtml" model="Model" />
-
-    @*//TODO:增加儀錶板項目數量的判斷 <1 就隱藏展開bar的鈕*@
-    <button class="navbar-toggler aside-menu-toggler d-md-down-none" type="button" data-toggle="aside-menu-lg-show"><i class="fa fa-th-large" aria-hidden="true"></i></button>
-    <button class="navbar-toggler aside-menu-toggler d-lg-none" type="button" data-toggle="aside-menu-show"><i class="fa fa-th-large" aria-hidden="true"></i></button>
 </header>

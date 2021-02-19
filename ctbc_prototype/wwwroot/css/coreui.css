@@ -12590,8 +12590,8 @@ canvas {
     -ms-flex-direction: column;
     flex-direction: column;
     padding: 0;
-    color: #fff;
-    background: #008080; /*sidebarcolor */
+    color: #000;
+    background: #cce3e1; /*sidebarcolor */
 }
 
 .sidebar .sidebar-close {
@@ -12704,7 +12704,7 @@ canvas {
 .sidebar .nav-link {
   display: block;
   padding: 0.75rem 1rem;
-  color: #fff;/*sidebarfontcolor*/
+  color: #000;/*sidebarfontcolor*/
   text-decoration: none;
   background: transparent;
 }

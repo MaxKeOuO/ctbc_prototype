@@ -1,19 +1,7 @@
-﻿@*@model BaseVo*@
+﻿@model BaseModel
 <div class="sidebar">
     <nav class="sidebar-nav">
         <ul class="nav">
-            @*
-            @if (Model.SubNetMains != null)
-            {//前臺才會顯示子系統切換
-                <li class="nav-item">
-                    <select id="selecteChildSys" class="form-control">
-                        @foreach (SubNetMainVo subNetMainVo in Model.SubNetMains)
-                        {
-                            <!option value="@subNetMainVo.SnmId" @(Model.SnmId == subNetMainVo.SnmId ? "selected" : "")>@subNetMainVo.SubNetName</!option>
-                        }
-                    </select>
-                </li>
-            }
             @foreach (var sidebarItem in Model.BarItems.SideBarItems)
             {
                 if (sidebarItem.OpenOtherWindow)
@@ -51,7 +39,7 @@
                     }
                 }
             }
-            *@
+            
 
         </ul>
     </nav>

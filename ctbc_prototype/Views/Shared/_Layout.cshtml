@@ -1,5 +1,6 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+﻿@model BaseModel
+<!DOCTYPE html>
+<html lang="en" xml:lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
@@ -29,7 +30,7 @@
             width: inherit;
             background-repeat: no-repeat;
             background-color: white;
-            background-size: 300px 120px;
+            background-size: 300px 100px;
         }
 
         .div-Info {
@@ -55,13 +56,104 @@
         .sidebar .nav-dropdown.open .nav-item.nav-admin-child .nav-link.active {
             background: #ef8f9b;
         }
+
+        /* Set padding to keep content from hitting the edges */
+        .body-content {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        /* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+        .dl-horizontal dt {
+            white-space: normal;
+        }
+
+        /* Set width on the form input elements since they're 100% wide by default */
+        input,
+        select,
+        textarea {
+            max-width: 280px;
+        }
+
+
+        body {
+            font-family: '微軟正黑體'
+        }
+
+        .div-logoMask {
+            width: 280px;
+            height: 100px;
+        }
+
+        .div-location-wording {
+            margin-top: 25px;
+            font-size: 20px;
+        }
+
+        .ul-headerItem {
+            float: right;
+            margin-top: 0px;
+        }
+
+        .nav-a-color {
+            color: #20a8d8;
+        }
+
+        .header-a-color {
+            color: #000;
+        }
+
+        .dashboard-container {
+            margin-top: 15px;
+        }
+
+        .RWDElement {
+            color: #000;
+            background: #dbf2e3;
+        }
+
+            .RWDElement .nav-link {
+                display: block;
+                padding: 0.75rem 1rem;
+                text-decoration: none;
+                color: #000;
+                background: #dbf2e3;
+                border-bottom: solid 0.5px #f5f3f1;
+            }
+
+        .headerImg {
+            width: 70px;
+            border-radius: 50%;
+            border: 1px solid #b3b3b3
+        }
+
+        .dashboard-card-header {
+            padding: 5px 15px;
+            background-color: #476b6b;
+            font-size: 1rem;
+        }
+
+        .height-Limit {
+            height: 100px;
+        }
+
+        .aside-Background {
+            background-color: #f5f3f1
+        }
+
+        .aside-Padding {
+            padding: 15px;
+        }
+
     </style>
 </head>
 <body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
     <partial name="_NavbarPartial.cshtml" model="Model" />
-    <partial name="_SidebarPartial.cshtml" model="Model" />
     <div class="app-body">
-        <main role="main">
+        <partial name="_SidebarPartial.cshtml" model="Model" />
+        <main class="main" role="main">
             <div class="container-fluid">
                 @RenderBody()
             </div>
