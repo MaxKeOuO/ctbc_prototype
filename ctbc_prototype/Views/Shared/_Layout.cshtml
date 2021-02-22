@@ -13,10 +13,11 @@
     <link rel="stylesheet" href="~/css/coreui3.min.css" />
     <link rel="stylesheet" href="~/css/datatables.min.css" />
     <link rel="stylesheet" href="~/css/select2.min.css" />
+    <link rel="stylesheet" href="~/css/jquery-timepicker.min.css" />
     @RenderSection("Styles", required: false)
     <style>
         .container-fluid {
-            padding: 15px 0px 15px 15px !important;
+            padding: 15px 15px 15px 15px !important;
         }
 
         .dashboard-Title {
@@ -26,11 +27,11 @@
 
         .div-logo {
             margin-left: 0px;
-            height: 100px;
+            height: 70px;
             width: inherit;
             background-repeat: no-repeat;
             background-color: white;
-            background-size: 300px 100px;
+            background-size: 250px 70px;
         }
 
         .div-Info {
@@ -71,11 +72,11 @@
         }
 
         /* Set width on the form input elements since they're 100% wide by default */
-        input,
+        /*input,
         select,
         textarea {
             max-width: 280px;
-        }
+        }*/
 
 
         body {
@@ -172,6 +173,7 @@
     <script src="~/js/coreui.min.js"></script>
     <script src="~/js/datatables.min.js"></script>
     <script src="~/js/dialog.min.js"></script>
+    <script src="~/js/jquery-timepicker.min.js"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

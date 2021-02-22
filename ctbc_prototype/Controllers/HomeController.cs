@@ -57,6 +57,15 @@ namespace ctbc_prototype.Controllers
             return View(result);
         }
 
+        public IActionResult AddAmountItem(SimpleRisk input)
+        {
+            RiskDetail result = new RiskDetail();
+
+            result.BarItems = GetBarItem();
+
+            return View(result);
+        }
+
         public IActionResult Privacy()
         {
             return View();
@@ -110,8 +119,8 @@ namespace ctbc_prototype.Controllers
         {
             return new List<SimpleRisk>()
             {
-                new SimpleRisk() { RId = Guid.NewGuid().ToString(), RDate = DateTime.Now.AddDays(3).ToString("yyyy/MM/dd"), UserName = "王小明", UserDept = "作業風險管理科", Memo = "", RStatus = "提報人已確認" },
-                new SimpleRisk() { RId = Guid.NewGuid().ToString(), RDate = DateTime.Now.AddDays(3).ToString("yyyy/MM/dd"), UserName = "林小華", UserDept = "作業風險管理科", Memo = "", RStatus = "提報人已確認" },
+                new SimpleRisk() { RId = "202012240001", RDate = DateTime.Now.AddDays(3).ToString("yyyy/MM/dd"), UserName = "王小明", UserDept = "作業風險管理科", Memo = "", RStatus = "提報人已確認" },
+                new SimpleRisk() { RId = "202012250008", RDate = DateTime.Now.AddDays(3).ToString("yyyy/MM/dd"), UserName = "林小華", UserDept = "作業風險管理科", Memo = "", RStatus = "提報人已確認" },
 
             };
         }

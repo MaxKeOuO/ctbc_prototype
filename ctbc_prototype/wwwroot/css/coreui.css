@@ -12197,7 +12197,7 @@ canvas {
     position: relative;
     -ms-flex-direction: row;
     flex-direction: row;
-    height: 130px;
+    height: 100px;
     /*headerHeight1*/
     padding: 0;
     margin: 0;
@@ -13889,7 +13889,7 @@ html[dir="rtl"] .aside-menu {
     width: 100%;
   }
   .header-fixed .app-body {
-    margin-top: 130px;/*headerHeight*/
+    margin-top: 100px;/*headerHeight*/
   }
   .sidebar-fixed .sidebar {
     position: fixed;
@@ -13898,7 +13898,7 @@ html[dir="rtl"] .aside-menu {
     height: 100vh;
   }
   .sidebar-fixed .app-header + .app-body .sidebar {
-    height: calc(100vh - 130px);/*headerHeight2*/
+    height: calc(100vh - 100px);/*headerHeight2*/
   }
   .sidebar-compact .sidebar {
     -ms-flex: 0 0 150px;
@@ -14540,13 +14540,13 @@ html[dir="rtl"] .aside-menu-show .aside-menu {
     margin-left: -77.5px;
   }
   .app-body {
-    margin-top: 130px;/*md?headerHeight*/
+    margin-top: 100px;/*md?headerHeight*/
   }
   .sidebar {
     position: fixed;
     z-index: 1019;
     width: 200px;
-    height: calc(100vh - 130px);/*headerHeight3*/
+    height: calc(100vh - 100px);/*headerHeight3*/
   }
   .sidebar-minimizer {
     display: none;

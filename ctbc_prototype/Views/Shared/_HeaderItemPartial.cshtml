@@ -15,21 +15,32 @@
             <div class="row">
                 <div class="col-3 text-center">
                 </div>
-                <div class="col" style="width:410px">
-                    <span style="font-size:20px;">
-                        您好, xxx
+                <div class="col" style="width:700px; color:white">
+                    <span>
+                        <!--style="font-size:20px;"-->
+                        角色:系統管理員
                     </span>
+                    <div class="float-right">
+                        日期 : @DateTime.Now.ToString("yyyy/MM/dd")
+                    </div>
                     <br />
                     <hr style="margin:1px" />
+                    <span>
+                        歡迎, 周玉珮使用作業風險事件管理系統
+                    </span>
+                    <br />
+                    <span>
+                        單位:銀行總經理/全球風險總管理處/風險規劃部/作業風險管理科
+                    </span>
                 </div>
             </div>
         </div>
         <button id="LogoutBtn" class="badge badge-pill badge-danger float-right mr-1" style="border: none; margin-top: 15px; " href="@Url.Action("Logout","User")">
             登出
         </button>
-        <button style="border:none;margin-top:15px; " class="badge badge-pill badge-success float-right mr-1" id="reCount">
-            延長作業時間
-        </button>
+        @*<button style="border:none;margin-top:15px; " class="badge badge-pill badge-success float-right mr-1" id="reCount">
+                延長作業時間
+            </button>*@
     </li>
 </ul>
 @*

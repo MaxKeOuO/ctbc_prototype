@@ -1,0 +1,318 @@
+﻿
+@{
+    ViewData["Title"] = "AddAmountItem";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles{
+    <style>
+        .form-control.no-validate:valid {
+            border-color: #ced4da;
+            padding-right: .75rem;
+            background: white;
+        }
+        .was-validated .form-control:valid, .form-control.is-valid {
+            border-color: #ced4da !important;
+            padding-right: .75rem !important;
+            background: white !important;
+        }
+    </style>
+}
+
+<h3>●風險事件提報 → 單一事件 → 新增金額項目</h3>
+<div class="row">
+    <div class="col">
+        事件編號:202012240001
+    </div>
+    <div class="col">
+        提報日期:2020/12/24
+    </div>
+    <div class="col">
+        提報人:周玉珮
+    </div>
+</div>
+<form class="needs-validation" novalidate>
+    <div class="row">
+        <div class="col">
+            <div class="form-group row">
+                <label for="billDept" class="col-sm-3 col-form-label">掛帳單位: </label>
+                <div class="col-sm-9">
+                    <select class="form-control" id="billDept" required>
+                        <option>作業風險管理科</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group row">
+                <label for="itemName" class="col-sm-3 col-form-label">項目名稱: </label>
+                <div class="col-sm-9">
+                    <select class="form-control" id="itemName" required>
+                        <option>99.其他</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <div class="row mt-2" style="border:solid 1px">
+                <div class="col-1" style="background-color:#f0f3f5; border:1px solid #e4e7ea;">預<br />估<br />損<br />失</div>
+                <div class="col">
+                    <div class="row">
+                        <div class="col-2">
+                            <div class="row">
+                                <label class="col-sm pr-0 col-form-label col-form-label-sm">原幣</label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group row">
+                                        <label for="loss1-1" class="col-sm-3 pr-0 col-form-label col-form-label-sm">幣別:</label>
+                                        <div class="col-sm">
+                                            <select class="form-control" id="loss1-1">
+                                                <option>美金</option>
+                                                <option>新台幣</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <input type="text" class="form-control" value="30,000" required />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="form-group row">
+                                <label for="Rate1" class="col-sm-5 pr-0 col-form-label col-form-label-sm">匯率:</label>
+                                <div class="col-sm">
+                                    <input type="text" id="Rate1" class="form-control" value="30.25" required />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group row">
+                                <label for="loss1-2" class="col-sm-3 pr-0 col-form-label col-form-label-sm">折合新台幣:</label>
+                                <div class="col-sm">
+                                    <input type="text" id="loss1-2" readonly class="form-control" value="907,500" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-2" style="border:solid 1px">
+                <div class="col-1" style="background-color:#f0f3f5; border:1px solid #e4e7ea;">總<br />損<br />失</div>
+                <div class="col">
+                    <div class="row">
+                        <div class="col-2">
+                            <div class="row">
+                                <label class="col-sm pr-0 col-form-label col-form-label-sm">原幣</label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group row">
+                                        <label for="loss2-1" class="col-sm-3 pr-0 col-form-label col-form-label-sm">幣別:</label>
+                                        <div class="col-sm">
+                                            <select class="form-control" id="loss2-1">
+                                                <option>美金</option>
+                                                <option>新台幣</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <input type="text" class="form-control" value="30,000" required />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="form-group row">
+                                <label for="Rate2" class="col-sm-5 pr-0 col-form-label col-form-label-sm">匯率:</label>
+                                <div class="col-sm">
+                                    <input type="text" id="Rate2" class="form-control" value="30.25" required />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group row">
+                                <label for="loss2-2" class="col-sm-3 pr-0 col-form-label col-form-label-sm">折合新台幣:</label>
+                                <div class="col-sm">
+                                    <input type="text" id="loss2-2" readonly class="form-control" value="907,500" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-2" style="border:solid 1px">
+                <div class="col-1" style="background-color:#f0f3f5; border:1px solid #e4e7ea;">損<br />失<br />回<br />收</div>
+                <div class="col">
+                    <div class="row">
+                        <div class="col-2">
+                            <div class="row">
+                                <label class="col-sm pr-0 col-form-label col-form-label-sm">原幣</label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group row">
+                                        <label for="loss3-1" class="col-sm-3 pr-0 col-form-label col-form-label-sm">幣別:</label>
+                                        <div class="col-sm">
+                                            <select class="form-control" id="loss3-1">
+                                                <option>美金</option>
+                                                <option>新台幣</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <input type="text" class="form-control" value="5,000" required />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="form-group row">
+                                <label for="Rate3" class="col-sm-5 pr-0 col-form-label col-form-label-sm">匯率:</label>
+                                <div class="col-sm">
+                                    <input type="text" id="Rate3" class="form-control" value="30.25" required />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group row">
+                                <label for="loss3-2" class="col-sm-3 pr-0 col-form-label col-form-label-sm">折合新台幣:</label>
+                                <div class="col-sm">
+                                    <input type="text" id="loss3-2" readonly class="form-control" value="151,250" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col pl-0">
+                    <div class="input-group col-sm pl-0">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">損失回收方式</div>
+                        </div>
+                        <input type="text" class="form-control" id="ReturnLossType" value="保險" required />
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-2" style="border:solid 1px">
+                <div class="col-1" style="background-color:#f0f3f5; border:1px solid #e4e7ea;">淨<br />損<br />失</div>
+                <div class="col">
+                    <div class="row">
+                        <div class="col-2">
+                            原幣
+                        </div>
+                        <div class="col">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group row">
+                                        <label for="loss4-1" class="col-sm-3 pr-0 col-form-label col-form-label-sm">幣別:</label>
+                                        <div class="col-sm">
+                                            <select class="form-control" id="loss4-1">
+                                                <option>美金</option>
+                                                <option>新台幣</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <input type="text" class="form-control" value="25,000" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-5">
+                            <div class="form-group row">
+                                <label for="Rate4" class="col-sm-3 pr-0 col-form-label col-form-label-sm">匯率:</label>
+                                <div class="col-sm">
+                                    <input type="text" id="Rate4" class="form-control" value="30.25" required />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group row">
+                                <label for="loss4-2" class="col-sm-3 pr-0 col-form-label col-form-label-sm">折合新台幣:</label>
+                                <div class="col-sm">
+                                    <input type="text" id="loss4-2" readonly class="form-control" value="756,000" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+        <div class="col">
+            <div class="form-group row">
+                <label for="code1" class="col-sm-3 pr-0 col-form-label col-form-label-sm">出帳科目代號:</label>
+                <div class="col-sm">
+                    <input type="text" id="code1" class="form-control" value="" required />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="formcode" class="col-sm-3 pr-0 col-form-label col-form-label-sm">OA表單編號:</label>
+                <div class="col-sm">
+                    <input type="text" id="formcode" class="form-control" value="" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="AmountDate" class="col-sm-3 pr-0 col-form-label col-form-label-sm">出帳日期:</label>
+                <div class="input-group col-sm">
+                    <input type="text" id="AmountDate" class="form-control" value="" required />
+                    <div class="input-group-append">
+                        <div class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="file" class="col-sm-3 col-form-label col-form-label-sm">出帳資訊檔: </label>
+                <div class="col-sm">
+                    <input type="file" id="file" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col">
+                    <button class="btn btn-primary btn-lg btn-block" href="@Url.Action("RiskEdit")">新增</button>
+                </div>
+                <div class="col">
+                    <a class="btn btn-danger btn-lg btn-block" href="@Url.Action("RiskEdit")">取消</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+@section Scripts{
+    <script>
+        $(document).ready(function (e) {
+            $('#AmountDate').datepicker({
+                dateFormat: 'yy-mm-dd'
+            });
+
+            $('form').submit(function (event) {
+                if ($('form').get(0).checkValidity() === false) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                $('form').get(0).classList.add('was-validated');
+            });
+        });
+    </script>
+}

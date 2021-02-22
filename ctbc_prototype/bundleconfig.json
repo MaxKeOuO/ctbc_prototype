@@ -49,15 +49,21 @@
         }
     },
     {
-        "outputFileName": "wwwroot/js/fullcalendar.min.js",
+        "outputFileName": "wwwroot/js/jquery-ui.min.js",
         "inputFiles": [
-            "Scripts/lib/jquery-ui/js/jquery-ui.js",
-            "Scripts/lib/jquery-timepicker/js/jquery-timepicker.min.js",
-            "Scripts/lib/fullcalendar/js/fullcalendar.js",
-            "Scripts/lib/fullcalendar/js/locale.zh-tw.min.js"
+            "Scripts/lib/jquery-ui/js/jquery-ui.js"
         ],
         "minify": {
             "enabled": true
+        }
+    },
+    {
+        "outputFileName": "wwwroot/js/jquery-timepicker.min.js",
+        "inputFiles": [
+            "Scripts/lib/jquery-timepicker/js/jquery-timepicker.min.js"
+        ],
+        "minify": {
+            "enabled": false
         }
     },
     {
@@ -175,6 +181,15 @@
         "outputFileName": "wwwroot/css/daterangepicker.min.css",
         "inputFiles": [
             "Scripts/lib/daterangepicker/daterangepicker.css"
+        ],
+        "minify": {
+            "enabled": true
+        }
+    },
+    {
+        "outputFileName": "wwwroot/css/jquery-timepicker.min.css",
+        "inputFiles": [
+            "Scripts/lib/jquery-timepicker/css/jquery-timepicker.css"
         ],
         "minify": {
             "enabled": true

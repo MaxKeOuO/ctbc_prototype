@@ -4,18 +4,375 @@
 }
 @section Styles{
     <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
 
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            /*padding: 5px;*/
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #ffffff;
+        }
+
+        .no-validate:valid {
+            border-color: #ced4da !important;
+            padding-right: .75rem !important;
+            background: none !important;
+        }
+        .was-validated .form-control:valid, .form-control.is-valid {
+            border-color: #ced4da !important;
+            padding-right: .75rem !important;
+            background: white !important;
+        }
     </style>
 }
 
-<h3>●風險事件提報 → 單一事件</h3>
+<form class="needs-validation" novalidate>
+    <h3>●風險事件提報 → 單一事件</h3>
+    <div class="row">
+        <div class="col-5">
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-3 col-form-label">事件編號: </label>
+                <div class="col-sm-9">
+                    <input type="text" name="staticEmail" readonly class="form-control-plaintext" id="staticEmail" value="202012240001" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="dept" class="col-sm-3 col-form-label">提報單位: </label>
+                <div class="col-sm-9">
+                    <select class="form-control" id="dept" required>
+                        <option>作業風險管理科</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="location" class="col-sm-3 col-form-label">發生地區: </label>
+                <div class="col-sm-9">
+                    <select class="form-control" id="location" required>
+                        <option>台北市</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label" for="startDate">發生日期: </label>
+                <div class="input-group col-sm-9">
+                    <input type="text" name="startDate" class="form-control" id="startDate" required>
+                    <div class="input-group-append">
+                        <div class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label" for="findDate">發現日期: </label>
+                <div class="input-group col-sm-9">
+                    <input type="text" class="form-control" id="findDate" required>
+                    <div class="input-group-append">
+                        <div class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="EventType1" class="col-sm-3 col-form-label">事件型態 <br />(第一層): </label>
+                <div class="col-sm-9">
+                    <select class="form-control" id="EventType1">
+                        <option value="1">1.	內部詐欺</option>
+                        <option value="2">2.	外部詐欺</option>
+                        <option value="3">3.	僱用慣例、工作場所安全</option>
+                        <option value="4">4.	客戶、產品、營業行為</option>
+                        <option value="5">5.	人員或資產損失</option>
+                        <option value="6">6.	營運中斷與系統當機</option>
+                        <option value="7">7.	執行、運送及作業流程之管理</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="EventType2" class="col-sm-3 col-form-label">事件型態 <br />(第二層): </label>
+                <div class="col-sm-9">
+                    <select class="form-control" id="EventType2">
+                        <option>11.未經授權行為</option>
+                        <option>12.竊盜與詐欺(內部)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="EventReason1" class="col-sm-3 col-form-label">事件原因 <br />(第一層): </label>
+                <div class="col-sm-9">
+                    <select class="form-control" id="EventReason1">
+                        <option value="1">1.	流程面</option>
+                        <option value="2">2.	人員面</option>
+                        <option value="3">3.	系統面</option>
+                        <option value="4">4.	外部事件</option>
+                        <option value="5">5.	其他</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="EventReason2" class="col-sm-3 col-form-label">事件原因 <br />(第二層): </label>
+                <div class="col-sm-9">
+                    <select class="form-control" id="EventReason2">
+                        <option>101.內部流程設計不當</option>
+                        <option>102.內部管控程序不足</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="LossType1" class="col-sm-3 col-form-label">損失分類 <br />(第一層): </label>
+                <div class="col-sm-9">
+                    <select class="form-control" id="LossType1">
+                        <option value="1">1.	財務類損失</option>
+                        <option value="2">2.	非財務類損失</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="LossType2" class="col-sm-3 col-form-label">損失分類 <br />(第二層): </label>
+                <div class="col-sm-9">
+                    <select class="form-control" id="LossType2">
+                        <option>11.遵法</option>
+                        <option>12.法律責任</option>
+                        <option>13.打銷</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="RiskLevel" class="col-sm-3 col-form-label">風險等級</label>
+                <div class="col-sm-9">
+                    <select class="form-control" id="RiskLevel">
+                        <option>高</option>
+                        <option>中</option>
+                        <option>低</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="MajorIncident" class="col-sm-3 col-form-label">重大偶發</label>
+                <div class="col-sm-2">
+                    <input type="checkbox" class="form-control" id="MajorIncident" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="InfoIncident" class="col-sm-3 col-form-label">資安事件</label>
+                <div class="col-sm-2">
+                    <input type="checkbox" class="form-control" id="InfoIncident" />
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group row">
+                <div class="col">
+                    提報日期:2021/2/22
+                </div>
+                <div class="col">
+                    提報人:周玉珮
+                </div>
+                <div class="col">
+                    事件狀態:提報人已確認
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <a class="btn btn-success float-right" href="@Url.Action("AddAmountItem")">
+                        新增金額項目
+                    </a>
+                </div>
+            </div>
+            <div class="form-group row">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>項目</th>
+                            <th>估計損失<br />(折合台幣)</th>
+                            <th>總損失<br />(折合台幣)</th>
+                            <th>損失回收<br />(折合台幣)</th>
+                            <th>淨損失<br />(折合台幣)</th>
+                            <th>出帳日期</th>
+                            <th>修改</th>
+                            <th>刪除</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>99.其他</td>
+                            <td>907,500</td>
+                            <td>907,500</td>
+                            <td>151,250</td>
+                            <td>756,250</td>
+                            <td>2020/12/25</td>
+                            <td><button class="btn btn-primary" type="button">修改</button></td>
+                            <td><button class="btn btn-danger" type="button">刪除</button></td>
+                        </tr>
+                        <tr>
+                            <td>92.主管機關罰款</td>
+                            <td>2,000,000</td>
+                            <td>2,000,000</td>
+                            <td>0</td>
+                            <td>2,000,000</td>
+                            <td>2021/02/22</td>
+                            <td><button class="btn btn-primary" type="button">修改</button></td>
+                            <td><button class="btn btn-danger" type="button">刪除</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
-<form>
+            <div style="border:solid 1px" class="form-group row">
+                <div class="col mt-3">
+                    <div class="form-group row">
+                        @* <label class="col-sm-3 col-form-label" for="findDate">事件說明</label>*@
+                        <div class="input-group col-sm">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">事<br />件<br />說<br />明</div>
+                            </div>
+                            <textarea class="form-control" id="Description" rows="3" required></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="input-group col-sm">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">事<br />件<br />影<br />響</div>
+                            </div>
+                            <textarea class="form-control" id="Influences" rows="3" required></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label pr-0" for="file">事件說明檔: </label>
+                        <div class="input-group col-sm-10">
+                            <input type="file" class="form-control" id="file">
+                        </div>
+                    </div>
+                </div>
+            </div>
 
+            <div style="border:solid 1px" class="form-group row">
+                <div class="col-1 pr-0" style="background-color:#f0f3f5; border:1px solid #e4e7ea;">
+                    <div class="mt-5 d-flex align-items-center">
+                        <p>通知主管</p>
+                    </div>
+                </div>
+                <div class="col-5 input-group mt-2">
+                    <div class="form-group row">
+                        <label class="col-sm-3 pr-0 pl-0 col-form-label" for="DirectSupervisor">直屬主管: </label>
+                        <div class="input-group col-sm-9">
+                            <input type="text" class="form-control" id="DirectSupervisor" required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 pr-0 pl-0 col-form-label" for="Supervisor1">其他主管: </label>
+                        <div class="input-group col-sm-9">
+                            <input type="text" class="form-control" id="Supervisor1">
+                            <div class="input-group-append mb-3">
+                                <div class="input-group-text"><i class="fa fa-search" aria-hidden="true"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-5 input-group mt-2">
+                    <div class="form-group row">
+                        <label class="col-sm-3 pr-0 pl-0 col-form-label" for="Supervisor1">其他主管: </label>
+                        <div class="input-group col-sm-9">
+                            <input type="text" class="form-control" id="Supervisor1">
+                            <div class="input-group-append mb-3">
+                                <div class="input-group-text"><i class="fa fa-search" aria-hidden="true"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 pr-0 pl-0 col-form-label" for="Supervisor1">其他主管: </label>
+                        <div class="input-group col-sm-9">
+                            <input type="text" class="form-control" id="Supervisor1">
+                            <div class="input-group-append mb-3">
+                                <div class="input-group-text"><i class="fa fa-search" aria-hidden="true"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col"><button type="submit" href="@Url.Action("SingleRiskManage")" class="btn btn-success btn-lg btn-block">儲存</button></div>
+                <div class="col"><button type="button" class="btn btn-primary btn-lg btn-block">提報</button></div>
+                <div class="col"><a href="@Url.Action("SingleRiskManage")" class="btn btn-danger btn-lg btn-block">取消</a></div>
+            </div>
+        </div>
+    </div>
 </form>
+
 
 @section Scripts{
     <script>
+        $(document).ready(function () {
+            $('#startDate').datepicker({
+                dateFormat: 'yy-mm-dd'
+            });
+            $('#findDate').datepicker({
+                dateFormat: 'yy-mm-dd'
+            });
 
+            $('#EventType1').change(function (e) {
+                $('#EventType2').empty();
+                let appendList = [];
+                switch ($('#EventType1').val()) {
+                    case "1":
+                        appendList.push('11.未經授權行為');
+                        appendList.push('12.竊盜與詐欺(內部)');
+                        break;
+                    case "2":
+                        appendList.push('21.竊盜與詐欺(外部)');
+                        appendList.push('22.系統安控');
+                        break;
+                    case "3":
+                        appendList.push('31.僱用關係');
+                        appendList.push('32.環境安全');
+                        appendList.push('33.差別待遇');
+                        break;
+                    case "4":
+                        appendList.push('41.合適性、揭露及忠實義務');
+                        appendList.push('42.不當營業或市場行為');
+                        appendList.push('43.產品瑕疵');
+                        appendList.push('44.選擇、推介及暴險');
+                        appendList.push('45.諮詢服務');
+                        break;
+                    case "5":
+                        appendList.push('51.災害及其他事件');
+                        break;
+                    case "6":
+                        appendList.push('61.資訊系統');
+                        break;
+                    case "7":
+                        appendList.push('71.交易記錄、執行與維護');
+                        appendList.push('72.監控與報告');
+                        appendList.push('73.客戶吸收與文件資料');
+                        appendList.push('74.客戶/帳戶管理');
+                        appendList.push('75.交易對手');
+                        appendList.push('76.銷售商與供應商或協力廠商');
+                        break;
+                }
+
+                appendList.forEach((v, i) => {
+                    let opt = $('<option />');
+                    opt.text(v);
+                    $('#EventType2').append(opt);
+                });
+            });
+
+            $('form').submit(function (event) {
+                //event.preventDefault();
+                //let form = document.getElementsByClassName('needs-validation');
+                if ($('form').get(0).checkValidity() === false) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                $('form').get(0).classList.add('was-validated');
+            });
+        });
     </script>
 }
