@@ -1,0 +1,692 @@
+﻿
+@{
+    ViewData["Title"] = "SingleRiskSearch";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Styles{
+
+    <style>
+        .SingleRiskSearch {
+            display: block;
+            margin-inline-start: 2px;
+            margin-inline-end: 2px;
+            padding-block-start: 0.35em;
+            padding-inline-start: 0.75em;
+            padding-inline-end: 0.75em;
+            padding-block-end: 0.625em;
+            min-inline-size: min-content;
+            border-width: 2px;
+            border-style: groove;
+            border-color: threedface;
+            border-image: initial;
+            height: 230px;
+        }
+
+        .vertically {
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+
+        .multiselect {
+            z-index: 99;
+        }
+
+        .selectBox {
+            position: relative;
+        }
+
+            .selectBox select {
+                width: 100%;
+                font-weight: bold;
+            }
+
+        .overSelect {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+        }
+
+        #checkboxes {
+            display: none;
+            border: 1px #dadada solid;
+            background-color: white;
+            overflow: auto;
+        }
+
+            #checkboxes label {
+                display: block;
+            }
+
+                #checkboxes label:hover {
+                    background-color: #1e90ff;
+                }
+
+        .btn-group-focus {
+            background-color: #20a8d8;
+            color:white;
+        }
+
+        div.dataTables_wrapper {
+        }
+    </style>
+
+}
+<div class="row m-0 p-0">
+    <div class="col-sm-6 m-0 p-0">
+        <h3>●風險清單查詢 → 單一事件清單查詢</h3>
+    </div>
+    <div class="col-sm-6 m-0 p-0">
+        <button type="button" class="btn btn-secondary mr-1 ml-2 pull-right">
+            取消
+        </button>
+        <button type="button" class="btn btn-primary pull-right" onclick="search()">
+            查詢
+        </button>
+    </div>
+</div>
+<div class="form-group row SingleRiskSearch">
+    <div class="col mt-3">
+        <div class="form-group row ">
+            &nbsp;<span class="vertically">事件編號:</span>&nbsp;
+            <input type="text" class="form-control col-sm-2" required>
+            &nbsp;<span class="vertically"> ~ </span>&nbsp;
+            <input type="text" class="form-control col-sm-2" required>
+            <div class="col-sm-1"></div>
+            &nbsp;
+            &nbsp;
+            &nbsp;<span class="vertically ml-3">提報日期:</span>&nbsp;
+            <div class="input-group col-sm-2 p-0">
+                <input type="text" name="startDate" class="form-control" id="date1" required>
+                <div class="input-group-append">
+                    <div class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i></div>
+                </div>
+            </div>
+            &nbsp;<span class="vertically"> ~ </span>&nbsp;
+            <div class="input-group col-sm-2 p-0">
+                <input type="text" name="startDate" class="form-control" id="date2" required>
+                <div class="input-group-append">
+                    <div class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row ">
+
+            &nbsp;<span class="vertically">發生日期:</span>&nbsp;
+            <div class="input-group col-sm-2 p-0">
+                <input type="text" name="startDate" class="form-control" id="date3" required>
+                <div class="input-group-append">
+                    <div class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i></div>
+                </div>
+            </div>
+            &nbsp;<span class="vertically"> ~ </span>&nbsp;
+            <div class="input-group col-sm-2 p-0">
+                <input type="text" name="startDate" class="form-control" id="date4" required>
+                <div class="input-group-append">
+                    <div class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i></div>
+                </div>
+            </div>
+            <div class="col-sm-1"></div>
+            &nbsp;
+            &nbsp;
+            &nbsp;<span class="vertically ml-3">發現日期:</span>&nbsp;
+            <div class="input-group col-sm-2 p-0">
+                <input type="text" name="startDate" class="form-control" id="date5" required>
+                <div class="input-group-append">
+                    <div class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i></div>
+                </div>
+            </div>
+            &nbsp;<span class="vertically"> ~ </span>&nbsp;
+            <div class="input-group col-sm-2 p-0">
+                <input type="text" name="startDate" class="form-control" id="date6" required>
+                <div class="input-group-append">
+                    <div class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row ">
+            <div class="col-sm-5 m-0 p-0">
+                <div class="row  m-0 p-0">
+                    &nbsp;<span class="mt-1">提報單位:</span>&nbsp;
+                    <input type="text" class="form-control col-sm-8" required>
+                    <button type="button" class="btn btn-primary ml-3" style="height:35px">選擇單位</button>
+                </div>
+                <div class="row  m-0 p-0 mt-3">
+                    &nbsp;<span class="mt-1">清單顯示方式:</span>&nbsp;
+
+                    <div class="btn-group" role="group" aria-label="Basic outlined example">
+                        <button id="listA" type="button" class="btn btn-outline-primary btn-group btn-list" onclick="btnListClick('listA')">一般</button>
+                        <button id="listB" type="button" class="btn btn-outline-primary btn-group btn-list" onclick="btnListClick('listB')">追蹤清單</button>
+                        <button id="listC" type="button" class="btn btn-outline-primary btn-group btn-list" onclick="btnListClick('listC')">金額項目</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row col-sm-6 m-0 p-0 ml-1">
+                <div class="col-sm-2"></div>
+                <span class="mt-1 ">事件型態:</span>&nbsp;
+                <div class="input-group col p-0">
+                    <div class="multiselect col-11 pl-0 pr-4">
+                        <div class="selectBox" onclick="showCheckboxes()">
+                            <select class="form-control">
+                                <option>全部</option>
+                            </select>
+                            <div class="overSelect"></div>
+                        </div>
+                        <div id="checkboxes">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="check1">
+                                <label class="form-check-label" for="check1">
+                                    內部詐欺
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="check2">
+                                <label class="form-check-label" for="check2">
+                                    外部詐欺
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="check3">
+                                <label class="form-check-label" for="check3">
+                                    僱用慣例、工作場所安全
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="check4">
+                                <label class="form-check-label" for="check4">
+                                    客戶、產品、營業行為
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="check5">
+                                <label class="form-check-label" for="check5">
+                                    人員或資產損失
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="check6">
+                                <label class="form-check-label" for="check6">
+                                    營運中斷與系統當機
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="check7">
+                                <label class="form-check-label" for="check7">
+                                    執行、運送及作業流程之管理
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div id="dddd" class="p-0 m-0 d-none">
+    查詢時間:2021/03/15 15:30:31總筆數:4筆
+    <br>
+    查詢條件:提報日期(2021/02/01~2021/02/28);事件型態(全部)
+    <div id="t1" class="p-0 m-0 t-d-none">
+        <table id="table" class="mt-3 " style="width:100%">
+            <thead>
+                <tr>
+                    <th id="ThRId10">事件編號</th>
+                    <th id="ThDate9">事件說明</th>
+                    <th id="ThUserName8">提報人</th>
+                    <th id="ThDept7">提報單位</th>
+                    <th id="ThMemo6">提報日期</th>
+                    <th id="ThDept5">發生日期</th>
+                    <th id="ThMemo4">發現日期</th>
+                    <th id="ThItem3">事件型態</th>
+                    <th id="ThMoney2">事件狀態</th>
+                    <th id="ThMoney1">修訂履歷</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+    <div id="t2" class="p-0 m-0 t-d-none">
+        <table id="table1" class="mt-3" style="width:100%">
+            <thead>
+                <tr>
+                    <th id="Th1">事件編號</th>
+                    <th id="Th2">事件說明</th>
+                    <th id="Th3">提報人</th>
+                    <th id="Th4">提報單位</th>
+                    <th id="Th5">提報日期</th>
+                    <th id="Th6">發生日期</th>
+                    <th id="Th7">發現日期</th>
+                    <th id="Th8">事件型態</th>
+
+                    <th id="Th9">處理因應與改善</th>
+
+                    <th id="Th10">改善方案</th>
+                    <th id="Th11">改善内容</th>
+                    <th id="Th12">預計完成日</th>
+                    <th id="Th13">實際完成日</th>
+
+                    <th id="Th14">修訂履歷</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+    <div id="t3" class="p-0 m-0 t-d-none" style="overflow-x: auto;">
+        <table id="table2" class="display nowrap mt-3" style="width:100%">
+            <thead>
+                <tr>
+                    <th id="Tha1">事件編號</th>
+                    <th id="Tha2">事件說明</th>
+                    <th id="Tha3">提報人</th>
+                    <th id="Tha4">提報單位</th>
+                    <th id="Tha5">提報日期</th>
+                    <th id="Tha6">發生日期</th>
+                    <th id="Tha7">發現日期</th>
+                    <th id="Tha8">事件型態</th>
+
+
+                    <th id="Tha9">項目名稱</th>
+                    <th id="Tha10">預估損失金額</th>
+                    <th id="Tha11">總損失</th>
+                    <th id="Tha12">損失收回</th>
+                    <th id="Tha13">損失收回方式</th>
+                    <th id="Tha13">淨損失</th>
+
+
+                    <th id="Th14">修訂履歷</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+    <div class="row m-0 p-0">
+        <div class="col m-0 p-0">
+            <button type="button" class="btn btn-secondary mr-1 ml-2 pull-right">
+                回上頁
+            </button>
+            <button type="button" class="btn btn-success pull-right">
+                產生Excel
+            </button>
+
+        </div>
+    </div>
+</div>
+
+    @section Scripts{
+        <script>
+        var expanded = false;
+        var type = '';
+        function showCheckboxes() {
+            var checkboxes = document.getElementById("checkboxes");
+            if (!expanded) {
+                checkboxes.style.display = "block";
+                expanded = true;
+            } else {
+                checkboxes.style.display = "none";
+                expanded = false;
+            }
+        }
+        search
+
+        function search() {
+            $('#dddd').removeClass('d-none');
+            $('.t-d-none').addClass('d-none');
+
+            if (type =='listA') {
+                $('#t1').removeClass('d-none');
+            }
+
+            if (type == 'listB') {
+                $('#t2').removeClass('d-none');
+            }
+
+            if (type == 'listC') {
+                $('#t3').removeClass('d-none');
+            }
+
+            $("#table").css("width", "-webkit-fill-available!important");
+        }
+
+        function btnListClick(t) {
+            $('.btn-list').removeClass('btn-group-focus');
+            $('#'+t).addClass('btn-group-focus');
+            type = t;
+            console.log(type);
+        }
+
+        $(document).ready(function () {
+
+            $('#date1').datepicker({
+                dateFormat: 'yy-mm-dd'
+            });
+            $('#date2').datepicker({
+                dateFormat: 'yy-mm-dd'
+            });
+            $('#date3').datepicker({
+                dateFormat: 'yy-mm-dd'
+            });
+            $('#date4').datepicker({
+                dateFormat: 'yy-mm-dd'
+            });
+            $('#date5').datepicker({
+                dateFormat: 'yy-mm-dd'
+            });
+            $('#date6').datepicker({
+                dateFormat: 'yy-mm-dd'
+            });
+
+            let rowData = [
+                {//事件編號
+                    'name': 'rId',
+                'data': 'rId'
+                }
+                ,
+                {//事件說明
+                    'name': 'memo',
+                    'data': 'memo'
+                },
+                {//提報人
+                    'name': 'userName',
+                    'data': 'userName'
+                },
+                {//提報單位
+                    'name': 'userDept',
+                    'data': 'userDept'
+                },
+                {//提報日期
+                    'name': 'rDate',
+                'data': 'rDate'
+            },
+
+
+                {//發生日期
+
+                    'data': 'rDate1'
+                },
+                {//發現日期
+                    'data': 'rDate2'
+                },
+                {//事件型態
+                'data': 'rType'
+                },
+                {//事件狀態
+                    'data': 'rStatus'
+                },
+            {//管理按鈕
+                'data': 'rId',
+                'render': (data, type, full, meta) => {
+                    //編輯鈕
+                    let btnEdit = $('<a />');
+                    btnEdit.addClass('btn btn-primary');
+                    btnEdit.addClass('text-white');
+
+                    btnEdit.text('log');
+
+                    return btnEdit.prop('outerHTML');
+                }
+            }
+        ];
+
+            $('#table').DataTable({
+                //"processing": true,
+                //"serverSide": initData.serverSide,
+                //"destroy": initData.destroy,
+                "ajax": {
+                    "url": "@Url.Action("GetRiskList2")",
+                    "type": "POST"
+                },
+                "columns": rowData,
+                "orderCellsTop": true,
+                "fixedHeader": true,
+                "lengthMenu": [[10, 30, 50, -1], [10, 30, 50, "All"]],
+                "dom": '<"toolbar">rtlp',
+                "pagingType": "full_numbers",
+                "language": {
+                    "autoWidth": false,
+                    "decimal": "",
+                    "emptyTable": "沒有資料",
+                    "info": "顯示第 _START_ 到第 _END_ 筆共 _TOTAL_ 筆",
+                    "infoEmpty": "顯示第 0 到第 0 筆共 0 筆",
+                    "infoFiltered": "(從總共 _MAX_ 筆中篩選)",
+                    "infoPostFix": "",
+                    "thousands": "",
+                    "lengthMenu": "每頁顯示_MENU_筆資料",
+                    "loadingRecords": "讀取中...",
+                    "processing": "讀取中...",
+                    "search": "<div id='search-div' class='input-group-prepend'><i style='padding-top:9px' class='fa fa-search input-group-text' aria-hidden='true'></i></div>",
+                    "zeroRecords": "找不到相符的資料",
+                    "paginate": {
+                        "first": "最前",
+                        "last": "最後",
+                        "next": "下頁",
+                        "previous": "上頁"
+                    },
+                    "aria": {
+                        "sortAscending": ": 升序排列",
+                        "sortDescending": ": 降序排列"
+                    }
+                },
+                //"fnRowCallback": initData.fnRowCallback,
+                //"drawCallback": initData.drawCallback,
+            });
+
+             rowData = [
+                {//事件編號
+                    'name': 'rId',
+                'data': 'rId'
+                }
+                ,
+                {//事件說明
+                    'name': 'memo',
+                    'data': 'memo'
+                },
+                {//提報人
+                    'name': 'userName',
+                    'data': 'userName'
+                },
+                {//提報單位
+                    'name': 'userDept',
+                    'data': 'userDept'
+                },
+                {//提報日期
+                    'name': 'rDate',
+                'data': 'rDate'
+            },
+
+
+                {//發生日期
+
+                    'data': 'rDate1'
+                },
+                {//發現日期
+                    'data': 'rDate2'
+                },
+                {//事件型態
+                'data': 'rType'
+                 },
+                 {//項目名稱
+                     'data': 'memo1'
+                 },
+                 {//預估損失金額
+                     'data': 'memo2'
+                 },
+                 {//總損失
+                     'data': 'memo3'
+                 },
+                 {//損失收回
+                     'data': 'memo4'
+                 },
+                 {//損失收回方式
+                     'data': 'memo5'
+                 },
+                 {//淨損失
+                     'data': 'memo6'
+                 },
+            {//管理按鈕
+                'data': 'rId',
+                'render': (data, type, full, meta) => {
+                    //編輯鈕
+                    let btnEdit = $('<a />');
+                    btnEdit.addClass('btn btn-primary');
+                    btnEdit.addClass('text-white');
+
+                    btnEdit.text('log');
+
+                    return btnEdit.prop('outerHTML');
+                }
+            }
+        ];
+
+            $('#table2').DataTable({
+                //"processing": true,
+                //"serverSide": initData.serverSide,
+                //"destroy": initData.destroy,
+                "ajax": {
+                    "url": "@Url.Action("GetRiskList4")",
+                    "type": "POST"
+                },
+                "columns": rowData,
+                "orderCellsTop": true,
+                "fixedHeader": true,
+                "lengthMenu": [[10, 30, 50, -1], [10, 30, 50, "All"]],
+                "dom": '<"toolbar">rtlp',
+                "pagingType": "full_numbers",
+                "language": {
+                    "scrollX": true,
+                    "decimal": "",
+                    "emptyTable": "沒有資料",
+                    "info": "顯示第 _START_ 到第 _END_ 筆共 _TOTAL_ 筆",
+                    "infoEmpty": "顯示第 0 到第 0 筆共 0 筆",
+                    "infoFiltered": "(從總共 _MAX_ 筆中篩選)",
+                    "infoPostFix": "",
+                    "thousands": "",
+                    "lengthMenu": "每頁顯示_MENU_筆資料",
+                    "loadingRecords": "讀取中...",
+                    "processing": "讀取中...",
+                    "search": "<div id='search-div' class='input-group-prepend'><i style='padding-top:9px' class='fa fa-search input-group-text' aria-hidden='true'></i></div>",
+                    "zeroRecords": "找不到相符的資料",
+                    "paginate": {
+                        "first": "最前",
+                        "last": "最後",
+                        "next": "下頁",
+                        "previous": "上頁"
+                    },
+                    "aria": {
+                        "sortAscending": ": 升序排列",
+                        "sortDescending": ": 降序排列"
+                    }
+                },
+                //"fnRowCallback": initData.fnRowCallback,
+                //"drawCallback": initData.drawCallback,
+            });
+
+
+                rowData = [
+                {//事件編號
+                    'name': 'rId',
+                'data': 'rId'
+                }
+                ,
+                {//事件說明
+                    'name': 'memo',
+                    'data': 'memo'
+                },
+                {//提報人
+                    'name': 'userName',
+                    'data': 'userName'
+                },
+                {//提報單位
+                    'name': 'userDept',
+                    'data': 'userDept'
+                },
+                {//提報日期
+                    'name': 'rDate',
+                'data': 'rDate'
+            },
+
+
+                {//發生日期
+
+                    'data': 'rDate1'
+                },
+                {//發現日期
+                    'data': 'rDate2'
+                },
+                {//事件型態
+                'data': 'rType'
+                },
+                 {//處理因應與改善
+                     'data': 'memo1'
+                 },
+                 {//改善方案
+                     'data': 'memo2'
+                 },
+                 {//改善内容
+                     'data': 'memo3'
+                 },
+                 {//預計完成日
+                     'data': 'memo4'
+                 },
+                 {//實際完成日
+                     'data': 'memo5'
+                 },
+            {//管理按鈕
+                'data': 'rId',
+                'render': (data, type, full, meta) => {
+                    //編輯鈕
+                    let btnEdit = $('<a />');
+                    btnEdit.addClass('btn btn-primary');
+                    btnEdit.addClass('text-white');
+
+                    btnEdit.text('log');
+
+                    return btnEdit.prop('outerHTML');
+                }
+            }
+        ];
+
+            $('#table1').DataTable({
+                //"processing": true,
+                //"serverSide": initData.serverSide,
+                //"destroy": initData.destroy,
+                "ajax": {
+                    "url": "@Url.Action("GetRiskList3")",
+                    "type": "POST"
+                },
+                "columns": rowData,
+                "orderCellsTop": true,
+                "fixedHeader": true,
+                "lengthMenu": [[10, 30, 50, -1], [10, 30, 50, "All"]],
+                "dom": '<"toolbar">rtlp',
+                "pagingType": "full_numbers",
+                "language": {
+                    "decimal": "",
+                    "emptyTable": "沒有資料",
+                    "info": "顯示第 _START_ 到第 _END_ 筆共 _TOTAL_ 筆",
+                    "infoEmpty": "顯示第 0 到第 0 筆共 0 筆",
+                    "infoFiltered": "(從總共 _MAX_ 筆中篩選)",
+                    "infoPostFix": "",
+                    "thousands": "",
+                    "lengthMenu": "每頁顯示_MENU_筆資料",
+                    "loadingRecords": "讀取中...",
+                    "processing": "讀取中...",
+                    "search": "<div id='search-div' class='input-group-prepend'><i style='padding-top:9px' class='fa fa-search input-group-text' aria-hidden='true'></i></div>",
+                    "zeroRecords": "找不到相符的資料",
+                    "paginate": {
+                        "first": "最前",
+                        "last": "最後",
+                        "next": "下頁",
+                        "previous": "上頁"
+                    },
+                    "aria": {
+                        "sortAscending": ": 升序排列",
+                        "sortDescending": ": 降序排列"
+                    }
+                },
+                //"fnRowCallback": initData.fnRowCallback,
+                //"drawCallback": initData.drawCallback,
+            });
+        });
+        </script>
+    }

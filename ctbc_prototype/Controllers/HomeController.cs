@@ -48,6 +48,42 @@ namespace ctbc_prototype.Controllers
             return Json(dataTablesReturnVo);
         }
 
+        public IActionResult GetRiskList2()
+        {
+            var result = GetDefaultRisk2();
+
+            DataTablesReturn dataTablesReturnVo = new DataTablesReturn();
+
+            dataTablesReturnVo.Data = result;
+
+
+            return Json(dataTablesReturnVo);
+        }
+
+        public IActionResult GetRiskList3()
+        {
+            var result = GetDefaultRisk3();
+
+            DataTablesReturn dataTablesReturnVo = new DataTablesReturn();
+
+            dataTablesReturnVo.Data = result;
+
+
+            return Json(dataTablesReturnVo);
+        }
+
+        public IActionResult GetRiskList4()
+        {
+            var result = GetDefaultRisk4();
+
+            DataTablesReturn dataTablesReturnVo = new DataTablesReturn();
+
+            dataTablesReturnVo.Data = result;
+
+
+            return Json(dataTablesReturnVo);
+        }
+
         public IActionResult RiskEdit(SimpleRisk input)
         {
             RiskDetail result = new RiskDetail();
@@ -97,8 +133,8 @@ namespace ctbc_prototype.Controllers
                     new BarItem() { ItemName = "風險事件審核", ItemHref = "#" , Children = new List<BarItem>(){
                         new BarItem() { ItemName = "待審核事件列表", ItemHref = "#" },
                     } },
-                    new BarItem() { ItemName = "風險事件查詢", ItemHref = "#", Children = new List<BarItem>(){
-                        new BarItem() { ItemName = "單一事件清單查詢", ItemHref = "#" },
+                    new BarItem() { ItemName = "風險清單查詢", ItemHref = "#", Children = new List<BarItem>(){
+                        new BarItem() { ItemName = "單一事件清單查詢", ItemHref = "/Home/SingleRiskSearch" },
                         new BarItem() { ItemName = "彙總事件清單查詢", ItemHref = "#" },
                     } },
                     new BarItem() { ItemName = "報表", ItemHref = "#", Children = new List<BarItem>(){
@@ -119,10 +155,52 @@ namespace ctbc_prototype.Controllers
         {
             return new List<SimpleRisk>()
             {
-                new SimpleRisk() { RId = "202012240001", RDate = DateTime.Now.AddDays(3).ToString("yyyy/MM/dd"), UserName = "王小明", UserDept = "作業風險管理科", Memo = "", RStatus = "提報人已確認" },
+                 new SimpleRisk() { RId = "202012240001", RDate = DateTime.Now.AddDays(3).ToString("yyyy/MM/dd"), UserName = "王小明", UserDept = "作業風險管理科", Memo = "", RStatus = "提報人已確認" },
                 new SimpleRisk() { RId = "202012250008", RDate = DateTime.Now.AddDays(3).ToString("yyyy/MM/dd"), UserName = "林小華", UserDept = "作業風險管理科", Memo = "", RStatus = "提報人已確認" },
 
             };
+        }
+
+        private List<SimpleRisk2> GetDefaultRisk2()
+        {
+            return new List<SimpleRisk2>()
+            {
+                new SimpleRisk2() { RId = "202012240001", RDate = "2021/02/15",RDate1 = "2021/02/25",RDate2 = "2021/02/25",RType="內部詐欺", UserName = "王小明", UserDept = "作業風險管理科", Memo = "", RStatus = "提報人已確認"},
+                new SimpleRisk2() { RId = "202012250008", RDate = "2021/02/17",RDate1 = "2021/02/26",RDate2 = "2021/02/26",RType="人員或資產損失",  UserName = "林小華", UserDept = "作業風險管理科", Memo = "", RStatus = "提報人已確認"},
+
+            };
+        }
+
+
+        private List<SimpleRisk3> GetDefaultRisk3()
+        {
+            return new List<SimpleRisk3>()
+            {
+                new SimpleRisk3() { RId = "202012240001", RDate = "2021/02/15",RDate1 = "2021/02/25",RDate2 = "2021/02/25",RType="內部詐欺", UserName = "王小明", UserDept = "作業風險管理科", Memo = "",Memo1="",Memo2="",Memo3="",Memo4="2021/03/25",Memo5="2021/03/25"},
+                new SimpleRisk3() { RId = "202012250008", RDate = "2021/02/17",RDate1 = "2021/02/26",RDate2 = "2021/02/26",RType="人員或資產損失",  UserName = "林小華", UserDept = "作業風險管理科", Memo = "",Memo1="",Memo2="",Memo3="",Memo4="2021/03/25",Memo5="2021/03/25"},
+
+            };
+        }
+
+        private List<SimpleRisk4> GetDefaultRisk4()
+        {
+            return new List<SimpleRisk4>()
+            {
+                new SimpleRisk4() { RId = "202012240001", RDate = "2021/02/15",RDate1 = "2021/02/25",RDate2 = "2021/02/25",RType="內部詐欺", UserName = "王小明", UserDept = "作業風險管理科", Memo = "",Memo1="99.其他",Memo2="907,500",Memo3="907,500",Memo4="151,250",Memo5="",Memo6="756,250"},
+                new SimpleRisk4() {  RId = "202012240001", RDate = "2021/02/15",RDate1 = "2021/02/25",RDate2 = "2021/02/25",RType="內部詐欺", UserName = "王小明", UserDept = "作業風險管理科", Memo = "",Memo1="92.主管機關罰款",Memo2="2,000,000",Memo3="2,000,000",Memo4="0",Memo5="",Memo6="2,000,000"},
+                 new SimpleRisk4() {  RId = "202012250008", RDate = "2021/02/17",RDate1 = "2021/02/26",RDate2 = "2021/02/26",RType="人員或資產損失",  UserName = "林小華", UserDept = "作業風險管理科", Memo = "",Memo1="99.其他",Memo2="907,500",Memo3="907,500",Memo4="151,250",Memo5="",Memo6="756,250"},
+                new SimpleRisk4() { RId = "202012250008", RDate = "2021/02/17",RDate1 = "2021/02/26",RDate2 = "2021/02/26",RType="人員或資產損失",  UserName = "林小華", UserDept = "作業風險管理科", Memo = "",Memo1="92.主管機關罰款",Memo2="2,000,000",Memo3="2,000,000",Memo4="0",Memo5="",Memo6="2,000,000"},
+
+            };
+        }
+
+        public IActionResult SingleRiskSearch(BaseModel baseModel)
+        {
+            baseModel.BarItems = GetBarItem();
+
+
+
+            return View(baseModel);
         }
     }
 }
