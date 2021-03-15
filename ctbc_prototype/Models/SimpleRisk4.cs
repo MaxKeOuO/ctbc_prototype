@@ -24,6 +24,7 @@ namespace ctbc_prototype.Models
         public string Memo4 { get; set; }
         public string Memo5 { get; set; }
         public string Memo6 { get; set; }
+        public string Memo7 { get; set; }
 
     }
 }

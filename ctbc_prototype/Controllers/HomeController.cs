@@ -186,10 +186,10 @@ namespace ctbc_prototype.Controllers
         {
             return new List<SimpleRisk4>()
             {
-                new SimpleRisk4() { RId = "202012240001", RDate = "2021/02/15",RDate1 = "2021/02/25",RDate2 = "2021/02/25",RType="內部詐欺", UserName = "王小明", UserDept = "作業風險管理科", Memo = "",Memo1="99.其他",Memo2="907,500",Memo3="907,500",Memo4="151,250",Memo5="",Memo6="756,250"},
-                new SimpleRisk4() {  RId = "202012240001", RDate = "2021/02/15",RDate1 = "2021/02/25",RDate2 = "2021/02/25",RType="內部詐欺", UserName = "王小明", UserDept = "作業風險管理科", Memo = "",Memo1="92.主管機關罰款",Memo2="2,000,000",Memo3="2,000,000",Memo4="0",Memo5="",Memo6="2,000,000"},
-                 new SimpleRisk4() {  RId = "202012250008", RDate = "2021/02/17",RDate1 = "2021/02/26",RDate2 = "2021/02/26",RType="人員或資產損失",  UserName = "林小華", UserDept = "作業風險管理科", Memo = "",Memo1="99.其他",Memo2="907,500",Memo3="907,500",Memo4="151,250",Memo5="",Memo6="756,250"},
-                new SimpleRisk4() { RId = "202012250008", RDate = "2021/02/17",RDate1 = "2021/02/26",RDate2 = "2021/02/26",RType="人員或資產損失",  UserName = "林小華", UserDept = "作業風險管理科", Memo = "",Memo1="92.主管機關罰款",Memo2="2,000,000",Memo3="2,000,000",Memo4="0",Memo5="",Memo6="2,000,000"},
+                new SimpleRisk4() { RId = "202012240001", RDate = "2021/02/15",RDate1 = "2021/02/25",RDate2 = "2021/02/25",RType="內部詐欺", UserName = "王小明", UserDept = "作業風險管理科", Memo = "",Memo1="99.其他",Memo2="907,500",Memo3="907,500",Memo4="151,250",Memo5="",Memo6="756,250",Memo7="2020/12/25"},
+                new SimpleRisk4() {  RId = "202012240001", RDate = "2021/02/15",RDate1 = "2021/02/25",RDate2 = "2021/02/25",RType="內部詐欺", UserName = "王小明", UserDept = "作業風險管理科", Memo = "",Memo1="92.主管機關罰款",Memo2="2,000,000",Memo3="2,000,000",Memo4="0",Memo5="",Memo6="2,000,000",Memo7="2021/02/22"},
+                 new SimpleRisk4() {  RId = "202012250008", RDate = "2021/02/17",RDate1 = "2021/02/26",RDate2 = "2021/02/26",RType="人員或資產損失",  UserName = "林小華", UserDept = "作業風險管理科", Memo = "",Memo1="99.其他",Memo2="907,500",Memo3="907,500",Memo4="151,250",Memo5="",Memo6="756,250",Memo7="2020/12/25"},
+                new SimpleRisk4() { RId = "202012250008", RDate = "2021/02/17",RDate1 = "2021/02/26",RDate2 = "2021/02/26",RType="人員或資產損失",  UserName = "林小華", UserDept = "作業風險管理科", Memo = "",Memo1="92.主管機關罰款",Memo2="2,000,000",Memo3="2,000,000",Memo4="0",Memo5="",Memo6="2,000,000",Memo7="2021/02/22"},
 
             };
         }
